@@ -16,4 +16,4 @@ jobs:
         username: ${{ secrets.ECS_DEV_USERNAME }}
         key: ${{ secrets.ECS_DEV_SSH_KEY }}
         port: 22
-        script: sudo cp -a /var/moodledata/ /nfs-mount-point/moodledata
+        script: sudo cp -a /var/moodledata/. /nfs-mount-point/moodledata
