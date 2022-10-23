@@ -75,14 +75,14 @@ jobs:
           mysql password: test
           use tmpfs: true
 
-      - name: Setting up DB pgsql
-        if: ${{ matrix.db == 'pgsql' }}
-        uses: m4nu56/postgresql-action@v1
-        with:
-          postgresql version: 10
-          postgresql db: test
-          postgresql user: test
-          postgresql password: test
+#       - name: Setting up DB pgsql
+#         if: ${{ matrix.db == 'pgsql' }}
+#         uses: m4nu56/postgresql-action@v1
+#         with:
+#           postgresql version: 10
+#           postgresql db: test
+#           postgresql user: test
+#           postgresql password: test
 
       - name: Configuring git vars
         uses: rlespinasse/github-slug-action@v3.x
