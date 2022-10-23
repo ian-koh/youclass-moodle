@@ -16,7 +16,8 @@ jobs:
         username: ${{ secrets.ECS_DEV_USERNAME }}
         key: ${{ secrets.ECS_DEV_SSH_KEY }}
         port: 22
-        script: sudo cp -a /var/moodledata/. /nfs-mount-point/moodledata
+        #-R recursively copies all the files in the destination, -u ensures only new files are copied over, -p preserve timestamp
+        script: sudo cp -R -u -p /var/moodledata/. /nfs-mount-point/moodledata
     - name: clearing cache for prod server
       uses: appleboy/ssh-action@master
       with:
