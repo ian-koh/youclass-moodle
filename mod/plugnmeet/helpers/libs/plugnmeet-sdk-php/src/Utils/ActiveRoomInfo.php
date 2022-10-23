@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022 MynaParrot
  *
@@ -31,7 +32,7 @@ class ActiveRoomInfo
     /**
      * @var object
      */
-    protected object $roomInfo;
+    protected $roomInfo;
 
     /**
      * @param object $roomInfo
@@ -70,7 +71,10 @@ class ActiveRoomInfo
      */
     public function getJoinedParticipants(): int
     {
-        return $this->roomInfo->joined_participants;
+        if (isset($this->roomInfo->joined_participants)) {
+            return $this->roomInfo->joined_participants;
+        }
+        return 0;
     }
 
     /**
@@ -78,7 +82,7 @@ class ActiveRoomInfo
      */
     public function isRunning(): bool
     {
-        return $this->roomInfo->is_running;
+        return $this->roomInfo->is_running === 1 ? true : false;
     }
 
     /**
@@ -86,7 +90,7 @@ class ActiveRoomInfo
      */
     public function isActiveRecording(): bool
     {
-        return $this->roomInfo->is_recording;
+        return $this->roomInfo->is_recording === 1 ? true : false;
     }
 
     /**
@@ -94,13 +98,13 @@ class ActiveRoomInfo
      */
     public function isActiveRTMP(): bool
     {
-        return $this->roomInfo->is_active_rtmp;
+        return $this->roomInfo->is_active_rtmp === 1 ? true : false;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getWebhookUrl(): string
+    public function getWebhookUrl(): ?string
     {
         return $this->roomInfo->webhook_url;
     }
@@ -110,13 +114,13 @@ class ActiveRoomInfo
      */
     public function isBreakoutRoom(): bool
     {
-        return $this->roomInfo->is_breakout_room;
+        return $this->roomInfo->is_breakout_room === 1 ? true : false;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getParentRoomId(): string
+    public function getParentRoomId(): ?string
     {
         return $this->roomInfo->parent_room_id;
     }

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Copyright (c) 2022 MynaParrot
  *
@@ -33,6 +34,9 @@ class GenerateJoinTokenResponse extends BaseResponse
      */
     public function getToken(): string
     {
-        return $this->rawResponse->token ?? "";
+        if (!isset($this->rawResponse->token)) {
+            return "";
+        }
+        return $this->rawResponse->token;
     }
 }
